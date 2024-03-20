@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Organization",
+          "name": "Kosi Seva Sadan",
+          "url": "http://www.kosisevasadan.org",
+          "logo": "http://www.kosisevasadan.org/Assets/logo-png.png",
+          "description": "Kosi Seva Sadan is a Gandhian Organization focused on empowering communities and promoting sustainable development. Established in 1981, we are committed to gender equality, health, education, and environmental conservation.",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91 9934797023",
+            "contactType": "customer service"
+          },
+          "sameAs": [
+            "http://www.facebook.com/kosisevasadan",
+            "http://www.twitter.com/kosisevasadan",
+            "http://www.linkedin.com/in/kosisevasadan"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Women Empowerment",
+                  "description": "Dedicated programs for empowering women through education, vocational training, and community support.",
+                  "url": "http://www.kosisevasadan.org/womenEmpowerment.html"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Health & Nutrition",
+                  "description": "Initiatives focused on improving health and nutrition standards in underprivileged communities.",
+                  "url": "http://www.kosisevasadan.org/health-nutrition.html"
+                }
+              }
+              // Add more services as needed
+            ]
+          }
+        }
+        </script>
+
+
+    <script src="latestScript.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>Kosi Seva Sadan :: Home</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./Assets/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./Assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./Assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Include Firebase SDK -->
+    <!-- Include Firebase SDK version 8 -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+
+    <script>
+
+
+
+
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBDX844LkH3RJYyoitda2YUuNRf0kIFOPg",
+            authDomain: "ngomsgs.firebaseapp.com",
+            projectId: "ngomsgs",
+            storageBucket: "ngomsgs.appspot.com",
+            messagingSenderId: "830272389966",
+            appId: "1:830272389966:web:0323000fb8e0805907541f",
+            databaseURL: "https://ngomsgs-default-rtdb.firebaseio.com/"
+        };
+
+
+
+
+
+
+        firebase.initializeApp(firebaseConfig);
+
+        // Reference to the Firebase database
+        const database = firebase.database();
+        const newContactRef = database.ref('formInput').push();
+        const popContactRef = database.ref('popupEmailInput').push();
+
+        // Function to handle form submission
+        function submitForm() {
+            var time = new Date();
+            var options = { timeZone: 'Asia/Kolkata' }; // 'Asia/Kolkata' is the timezone for IST
+            var date = time.toLocaleString('en-US', options);
+
+            // Get values from input fields
+
+            const email = document.getElementById('emailInput').value;
+            const emailInputToast = document.getElementById('emailInputToast').value
+
+            if (email == "") {
+                alert("Please enter your email address before subscribing !!!");
+                return;
+            }
+
+            // Save data to Firebase
+
+            newContactRef.set({
+                email: email,
+                date: date
+            });
+
+            // Display success message
+            alert('Subscribed Successfully!!!');
+        }
+
+        function submitFormPop() {
+
+            var time = new Date();
+            var options = { timeZone: 'Asia/Kolkata' }; // 'Asia/Kolkata' is the timezone for IST
+            var date = time.toLocaleString('en-US', options);
+
+            const popEmail = document.getElementById('emailInputToast').value;
+
+            if (popEmail == "") {
+                alert("Please enter your email address before subscribing !!!");
+                return;
+            }
+
+            // Save data to Firebase
+
+            popContactRef.set({
+                email: popEmail,
+                date: date
+            });
+
+            // Display success message
+            alert('Subscribed Successfully!!!');
+
+
+        }
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+    <!-- <div class="overlay-loader">
+        <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+ -->
+
+    <div id="home" class="nav-transparent">
+        <div class="toprect">
+            <p>Call us: +91 9934797023 | +91 9113124943</p>
+            <p id="email" href="mailto:kosisevasadan@gmail.com">Email us: info@kosisevasadan.org</p>
+
+        </div>
+        <nav>
+            <ul>
+                <button id="header-donate"><a href="./donate.html">Donate</a></button>
+                <div class="logo-responsive">
+                    <li><img class="logo" src="./Assets/logo-png.png" alt="logo"></li>
+
+
+
+                    <div class="hamburgerIconContainer" id="hamburgerIconContainer">
+
+                        <span class="hamburgerLines" id="hamLine1"></span>
+                        <span class="hamburgerLines" id="hamLine2"></span>
+                        <span class="hamburgerLines" id="hamLine3"></span>
+
+
+                    </div>
+
+
+
+                    <li class="logo-text" data-aos="zoom-in">
+                        KOSI SEVA SADAN
+                        <p>Connecting people to community...</p>
+                    </li>
+
+                </div>
+
+                <div class="nav-links">
+
+                    <li><a href="#about"><b>Home</b></a></li>
+
+
+                    <li>
+                        <a id="nav-about" class="mouse-event"><b>About Us <span class="caret"></span></b></a>
+                        <div id="about-dropdown">
+                            <a href="./aboutWhoWeAre.html">Who We Are</a>
+                            <hr>
+                            <a href="./team.html">The Team</a>
+                            <hr>
+                            <a href="./values.html">Our Values</a>
+                            <hr>
+                            <a href="./kssPolicies.html">KSS Policies</a>
+                            <hr>
+                            <a href="">Financials</a>
+                        </div>
+
+                    </li>
+
+
+
+                    <li><a id="what" class="mouse-event"><b>What We Do <span class="caret"></span></b></a>
+
+                        <div id="what-dropdown">
+                            <a href="./womenEmpowerment.html" id="women-empowerment">Women Empowerment</a>
+                            <hr>
+                            <a href="" id="health-nutrition">Health & Nutrition</a>
+                            <hr>
+                            <a href="" id="watsan">Water and Sanitation (WATSAN)</a>
+                            <hr>
+                            <a href="" id="education-awareness">Education and Awareness</a>
+                            <hr>
+                            <a href="" id="child-rights">Child Rights</a>
+                            <hr>
+                            <a href="" id="drr-climate">DRR & Climate Change</a>
+                            <hr>
+                            <a href="" id="skills-dev">Skills Development</a>
+                            <hr>
+                            <a href="" id="sust-agri">Sustainable Agriculture</a>
+                            <hr>
+                            <a href="" id="environment">Environment & Clean Energy</a>
+                            <hr>
+                            <a href="" id="livelihood-prom">Livelihood Promotion</a>
+                        </div>
+
+                    </li>
+
+
+
+                    <li><a id="res" class="mouse-event"><b>Resources <span class="caret"></span></b></a>
+
+                        <div id="res-dropdown">
+                            <a href="">Annual Report</a>
+                            <hr>
+                            <a href="">FCRA</a>
+                            <hr>
+                            <a href="">Organization Doc</a>
+                            <hr>
+                            <a href="">Case Study</a>
+                            <hr>
+                            <a href="">Stories</a>
+                        </div>
+
+
+
+                    </li>
+                    <li><a id="navGallery" class="mouse-event"><b>Media <span class="caret"></span></b></a>
+
+                        <div id="gallery-dropdown">
+                            <a href="./galleryImages.html">Gallery</a>
+                            <hr>
+                            <a href="">Paper Clips</a>
+                        </div>
+
+                    </li>
+                    <li><a href="./contact.html"><b>Contact</b></a></li>
+                    <li> <button type="button" class="btn" id="liveToastBtn" onclick="subscribeAndPlaySound()">Subscribe
+                            <span class="bell">🔔</span></button></li>
+                </div>
+            </ul>
+
+        </nav>
+    </div>
+
+
+    <div id="main-home-container">
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2000">
+                    <img src="./Assets/img/1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="./Assets/img/2.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="./Assets/img/3.jpg" class="d-block w-100" alt="...">
+                </div>
+
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="./Assets/img/4.jpg" class="d-block w-100" alt="...">
+                </div>
+
+
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="./Assets/img/6.jpg" class="d-block w-100" alt="...">
+                </div>
+
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div class="tweets-container">
+            <iframe
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fkosisevasadan&tabs=timeline&width=300&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                width="300" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+    </div>
+
+
+    <div id="toastMainCont" class="min-vw-100" data-aos="fade-right">
+        <div class="toast-container position-fixed" id="toastMainCont">
+            <div id="liveToast" class="toast w-100" role="alert" aria-live="assertive" aria-atomic="true">
+                <div>
+
+
+                    <div class="toast-header d-flex flex-column">
+                        <div class="toastClose">x</div>
+                        <div class="tstHeadCont">
+
+                            <!-- <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"
+                                onclick=" toastBootstrap.hide()"></button> -->
+                            <img src="./Assets/newsltr.png" alt="">
+                        </div>
+                        <h5 class="text-bold">Subscribe to our Newsletter!</h5>
+                        <p>Subscribe to our newsletter and stay updated</p>
+                    </div>
+                </div>
+                <div class="toast-body">
+
+                    <input type="email" placeholder="your email" id="emailInputToast" class="border border-secondary">
+
+                    <button id="submitBtn" onclick="submitFormPop()">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="about" data-aos="fade-up" data-aos-offset="300" data-aos-easing="ease-in-sine">
+
+        <div class="cards-container">
+            <div class="card">
+                <div class="img-thumbnail">
+                    <img src="./Assets/rights.png" alt="" height="10px" width="10px">
+                </div>
+                <span class="card-ttl"><b>Women Empowerment</b></span>
+                <p>Since our establishment in 1981, we have been at the forefront of women empowerment. Our organization
+                    is dedicated to promoting gender equality and uplifting the lives of underprivileged women.</p>
+
+            </div>
+
+
+            <div class="card card-alter">
+                <img src="./Assets/health.png" alt="">
+                <span class="card-ttl"><b>Health & Nutrition</b></span>
+                <p>We have been tirelessly dedicated to the field of Health and Nutrition, championing the promotion of
+                    traditional healthcare systems with unwavering support from international NGOs.</p>
+
+            </div>
+            <div class="card card-alter-white">
+                <img src="./Assets/water.png" alt="">
+                <span class="card-ttl"><b>Water and Sanitation (WATSAN)</b></span>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis dolorem tenetur laudantium,
+                    animi facilis quaerat fugit repellat quo, vero eveniet dicta sapiente? Rerum enim quia ullam quo
+                    dolore eos dolores?</p>
+
+            </div>
+
+
+            <div class="card card-alter">
+                <img src="./Assets/Education.png" alt="">
+                <span class="card-ttl"><b>Education and Awareness</b></span>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis dolorem tenetur laudantium,
+                    animi facilis quaerat fugit repellat quo, vero eveniet dicta sapiente? Rerum enim quia ullam quo
+                    dolore eos dolores?</p>
+
+            </div>
+            <div class="card">
+                <img src="./Assets/child.png" alt="">
+                <span class="card-ttl"><b>Child Rights</b></span>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis dolorem tenetur laudantium,
+                    animi facilis quaerat fugit repellat quo, vero eveniet dicta sapiente? Rerum enim quia ullam quo
+                    dolore eos dolores?</p>
+
+            </div>
+
+
+
+        </div>
+
+        <img id="arrow" src="./Assets/down-arrow (1).png" alt="arrow" href="#hidden-card-container">
+
+        <div class="cards-container" id="hidden-card-container">
+            <div class="card">
+                <img src="./Assets/flood.png" alt="">
+                <span class="card-ttl"><b>DRR & Climate Change</b></span>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis dolorem tenetur laudantium,
+                    animi facilis quaerat fugit repellat quo, vero eveniet dicta sapiente? Rerum enim quia ullam quo
+                    dolore eos dolores?</p>
+
+            </div>
+
+
+            <div class="card card-alter">
+                <img src="./Assets/skill-development.png" alt="">
+                <span class="card-ttl"><b>Skill Development</b></span>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis dolorem tenetur laudantium,
+                    animi facilis quaerat fugit repellat quo, vero eveniet dicta sapiente? Rerum enim quia ullam quo
+                    dolore eos dolores?</p>
+
+            </div>
+            <div class="card card-alter-white">
+                <img src="./Assets/agriculture.png" alt="">
+                <span class="card-ttl"><b>Sustainable Agriculture</b></span>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis dolorem tenetur laudantium,
+                    animi facilis quaerat fugit repellat quo, vero eveniet dicta sapiente? Rerum enim quia ullam quo
+                    dolore eos dolores?</p>
+
+            </div>
+
+
+            <div class="card card-alter">
+                <img src="./Assets/trees.png" alt="">
+                <span class="card-ttl"><b>Environment and Clean Energy</b></span>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis dolorem tenetur laudantium,
+                    animi facilis quaerat fugit repellat quo, vero eveniet dicta sapiente? Rerum enim quia ullam quo
+                    dolore eos dolores?</p>
+
+            </div>
+
+            <div class="card">
+                <img src="./Assets/livelihood.png" alt="">
+                <span class="card-ttl"><b>Livelihood Promotion</b></span>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis dolorem tenetur laudantium,
+                    animi facilis quaerat fugit repellat quo, vero eveniet dicta sapiente? Rerum enim quia ullam quo
+                    dolore eos dolores?</p>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="footprints">
+
+        <h2 class="footprints">Our Footprints</h2>
+
+        <div class="footprintItem" data-aos="zoom-in-right" id="states">
+
+            <div class="fpImg"><img src="./Assets//geo.svg" alt=""></div>
+            <h3 id="statesNumber" data-end-value="19">0</h3>
+            <span class="footPara">
+                <p>States
+            </span>
+
+
+        </div>
+        <div class="footprintItem" data-aos="zoom-in-right" id="families">
+
+            <div class="fpImg"><img src="./Assets/family.png" alt=""></div>
+            <h3 id="familiesNumber" data-end-value="1000"> 0</h3>
+            <span class="footPara">
+                <p>Families
+            </span>
+
+
+        </div>
+
+
+    </section>
+
+    <section id="about">
+
+        <div class="about-container" data-aos="fade-right">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Light_old_age_home_4.jpg" alt="">
+
+            <div class="about-content">
+
+                <h2>Empowering Change, Transforming lives!</h2>
+                <p>Kosi Seva Sadan is a Gandhian Organization managed by the erstwhile
+                    volunteers originated from the Jayprakash Movement during Bhoodan
+                    Andolan. Since then the erstwhile volunteer started working in Mirzapur
+                    district during Bihar Movement launched by Jayaprakash Narayan. At that
+                    time 81 Gram Sabhas( A goup of small network in villages) were formed in the
+                    Gramdani Villages of Mahishi Block. The organization follws the Gandhian
+                    Principle and facilitate the process of holistic development of society based on
+                    equity, justice and sustainability. Kosi Seva Sadan has been involved in Bharat
+                    Yatra launched by Noble Prize winner Kailash Satyarthi.</p>
+
+
+                <button><a href="./readMore.html" target="_blank" id="about-button">Read more...</a></button>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+
+    <section id="latest">
+        <h3 class="latest-head">LATEST</h3>
+        <div class="latest-card-container">
+
+            <div class="card" style="width: 18rem;" id="card1" data-aos="zoom-in-up">
+                <img src="https://www.villagesquare.in/wp-content/uploads/2018/11/Tribalintegration-1024x550.jpg"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title1</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="read-more-btn" id="1" aria-valuetext="1" onclick="latestNo()">Read More</a>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;" id="card2" data-aos="zoom-in-up">
+                <img src="./Assets/93.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title2</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="read-more-btn" id="2" aria-valuetext="2" onclick="latestNo()">Read More</a>
+                </div>
+            </div>
+
+
+            <div class="card" style="width: 18rem;" data-aos="zoom-in-up">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Tribes_of_Madhya_Pradesh_001.jpg/640px-Tribes_of_Madhya_Pradesh_001.jpg"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title3</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="read-more-btn" id="3" aria-valuetext="3" onclick="latestNo()">Read More</a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="latest-card-container" data-aos="zoom-in-up">
+
+            <div class="card" style="width: 18rem;">
+                <img src="./Assets/43.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="read-more-btn" id="4" aria-valuetext="4" onclick="latestNo()">Read More</a>
+                </div>
+            </div>
+
+
+            <div class="card" style="width: 18rem;" data-aos="zoom-in-up">
+                <img src="./Assets/93.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="read-more-btn" id="5" onclick="latestNo()">Read More</a>
+                </div>
+            </div>
+
+
+            <div class="card" style="width: 18rem;" data-aos="zoom-in-up">
+                <img src="./Assets/53.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="read-more-btn" id="6" onclick="latestNo()">Read More</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section id="partners">
+
+        <h3 class="partner-head">OUR PARTNERS</h3>
+
+
+        <div class="slider-part">
+            <div class="slide-track">
+                <div class="slide-part">
+
+                    <a href="https://www.arghyam.org/">
+
+                        <img src="./Assets/Partners Logo/arghyam.png" height="100" width="250" alt="" />
+                    </a>
+
+                </div>
+                <div class="slide-part">
+                    <a href="https://casa-india.org/">
+
+                        <img src="./Assets/Partners Logo/casa logo.png" height="100" width="250" alt="" />
+                    </a>
+                </div>
+
+
+                <div class="slide-part">
+
+                    <a href="https://www.childlineindia.org/">
+                        <img src="./Assets/Partners Logo/childline.jpeg" height="100" width="250" alt="" />
+                    </a>
+                </div>
+
+                <div class="slide-part">
+                    <a href="http://www.gpsvs.org/">
+
+                        <img src="./Assets/Partners Logo/gpsvs.png" height="100" width="250" alt="" />
+                    </a>
+
+                </div>
+
+
+
+                <div class="slide-part">
+                    <a href="https://igsss.org/">
+                        <a href=""> <img src="/Assets/Partners Logo/igsss.png" height="100" width="250" alt="" /></a>
+                    </a>
+                </div>
+
+                <div class="slide-part">
+                    <a href="https://www.brot-fuer-die-welt.de/en/bread-for-the-world/">
+                        <img src="./Assets/Partners Logo/Logo_Brot_für_die_Welt.svg.png" height="100" width="250"
+                            alt="" />
+                    </a>
+                </div>
+
+                <div class="slide-part">
+                    <a href="https://www.misereor.org/">
+                        <img src="./Assets/Partners Logo/Misereor_Logo.svg.png" height="100" width="250" alt="" />
+
+                    </a>
+                </div>
+
+                <div class="slide-part">
+                    <a href="https://meghpyneabhiyan.wordpress.com/">
+
+
+                        <img src="./Assets/Partners Logo/mpa.png" height="100" width="250" alt="" />
+                    </a>
+                </div>
+
+                <div class="slide-part">
+
+                    <a href="https://swayamshikshanprayog.org/">
+                        <img src="./Assets/Partners Logo/ssp.png" height="100" width="250" alt="" />
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+    </section>
+
+    <section id="newslater">
+
+        <div class="newsletter-container">
+
+
+            <div class="fieldMainCont">
+                <img src="./Assets/newsltr.png" alt="">
+                <div class="newsRight">
+
+                    <h2>Subscribe to our <br>Newsletter !!!</h2>
+                    <p>Subscribe to our newsletter and stay updated</p>
+
+                    <input type="email" placeholder="your email" id="emailInput">
+
+                    <button id="submitBtn" onclick="submitForm()">Subscribe</button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        </div>
+
+
+
+    </section>
+
+    <section id="donate">
+
+        <div class="donate-left">
+            <div class="donate-left-head">
+                <img src="./Assets/give-love.png" width="90px">
+                <h2>Be the Difference: Support Our Cause, Donate Now!</h2>
+            </div>
+            <p>Your donation will directly support our impactful initiatives that focus on providing quality education
+                and essential healthcare services to underserved communities. With your help, we can create sustainable
+                change and empower individuals to lead better lives, fostering a brighter and more equitable future for
+                all.</p>
+        </div>
+        <button><a href="./donate.html">Donate</a></button>
+    </section>
+
+    <footer>
+        <div class="footer-container-main">
+            <div class="footer-container">
+                <div class="footer-contacts-add">
+
+                    <p> <b>REGISTERED OFFICE :</b><br>
+                        Acharyavan Mahsihi, <br>Near Sarvoday Maidan,<br>Mahishi, Saharsa,<br>BIHAR – 855216
+                    </p>
+                </div>
+
+
+                <div class="footer-contacts">
+                    <b>CONTACT US :</b>
+                    <p>Call us: +91 9934797023 | +91 9113124943<br>Email us: kosisevasadan@gmail.com</p>
+
+                </div>
+
+                <p class="mad"><b>MAKE A DONATION :</b><br></p>
+                <button id="footer-donate"><a href="./donate.html">Donate</a></button>
+            </div>
+            <div class="footer-social">
+                <div class="socialcontainer">
+                    <a href=""><img src="./Assets/instagramLogo.png" alt=""></a>
+                    <a href=""><img src="./Assets/facebook.png" alt=""></a>
+                    <a href="https://www.linkedin.com/in/rajendra-jha-4475989b/?originalSubdomain=in"><img
+                            src="./Assets/linkedinLogo.png" alt="" target="_blank"></a>
+                    <a href=""><img src="./Assets/twitterLogo.png" alt=""></a>
+                </div>
+            </div>
+            <hr>
+
+        </div>
+        <div class="footerlast">
+            <p> &copy;2023 Kosi Seva Sadan - All Rights Reserved</p>
+        </div>
+        </div>
+    </footer>
+    <script src="latest.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="./navScript.js"></script>
+    <script src="script.js"></script>
+
+
+
+    <script>
+
+        function animateNumbers(targetElement, endValue, duration) {
+            let startValue = 0;
+            let startTime;
+
+            function updateNumber(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = timestamp - startTime;
+                const percentage = Math.min(progress / duration, 1);
+                const currentNumber = Math.floor(startValue + percentage * (endValue - startValue));
+                targetElement.textContent = currentNumber;
+
+                if (percentage < 1) {
+                    requestAnimationFrame(updateNumber);
+                }
+            }
+
+            requestAnimationFrame(updateNumber);
+        }
+
+        // Function to handle intersection changes
+        function handleIntersection(entries, observer) {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("half-visible");
+                    observer.unobserve(entry.target);
+
+                    // Retrieve the end value from the data-end-value attribute
+                    const endValue = parseInt(entry.target.querySelector("h3").getAttribute("data-end-value"), 10);
+
+                    // Call the animateNumbers function for each number with the desired end value and duration
+                    animateNumbers(entry.target.querySelector("h3"), endValue, 1500);
+                }
+            });
+        }
+
+        // Create Intersection Observer instances for each footprintItem
+        const footprintItems = document.querySelectorAll('.footprintItem');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5, // Trigger when 50% of the element is visible
+        };
+
+        footprintItems.forEach((item) => {
+            const observer = new IntersectionObserver(handleIntersection, observerOptions);
+            observer.observe(item);
+        });
+
+        var audio = new Audio('./Assets/notification.wav');
+
+        function playNotificationSound() {
+
+            audio.play();
+        }
+
+        function subscribeAndPlaySound() {
+            // Your subscribe logic here
+
+            // Play notification sound
+            playNotificationSound();
+        }
+
+        const toastTrigger = document.getElementById('liveToastBtn')
+        const toastLiveExample = document.getElementById('liveToast')
+
+        if (toastTrigger) {
+
+
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+            toastTrigger.addEventListener('click', () => {
+                toastBootstrap.show()
+            })
+        }
+
+
+
+        setTimeout(function () {
+            document.getElementById('liveToastBtn').click();
+            audio.play();
+
+        }, 5000);
+
+        let toastClose = document.querySelector(".toastClose").addEventListener("click", () => {
+            console.log("clicked");
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+            toastBootstrap.hide()
+
+        })
+
+
+
+
+
+        let arrow = document.getElementById("arrow");
+
+        arrow.onclick = () => {
+            if (hiddenCard.style.display != "flex") {
+                hiddenCard.style.display = "flex";
+                hiddenCard.style.marginTop = "10px";
+                arrow.style.display = "none";
+                hiddenCard.scrollIntoView({ behavior: "smooth" });
+            } else {
+                hiddenCard.style.display = "none";
+            }
+        };
+
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
