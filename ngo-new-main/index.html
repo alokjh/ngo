@@ -55,24 +55,6 @@
 
     <script src="latestScript.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <title>Kosi Seva Sadan :: Home</title>
     <link rel="stylesheet" href="style.css">
 
@@ -91,11 +73,6 @@
 
     <script>
 
-
-
-
-
-
         const firebaseConfig = {
             apiKey: "AIzaSyBDX844LkH3RJYyoitda2YUuNRf0kIFOPg",
             authDomain: "ngomsgs.firebaseapp.com",
@@ -106,25 +83,14 @@
             databaseURL: "https://ngomsgs-default-rtdb.firebaseio.com/"
         };
 
-
-
-
-
-
         firebase.initializeApp(firebaseConfig);
-
-        // Reference to the Firebase database
         const database = firebase.database();
         const newContactRef = database.ref('formInput').push();
         const popContactRef = database.ref('popupEmailInput').push();
-
-        // Function to handle form submission
         function submitForm() {
             var time = new Date();
             var options = { timeZone: 'Asia/Kolkata' }; // 'Asia/Kolkata' is the timezone for IST
             var date = time.toLocaleString('en-US', options);
-
-            // Get values from input fields
 
             const email = document.getElementById('emailInput').value;
             const emailInputToast = document.getElementById('emailInputToast').value
@@ -134,14 +100,10 @@
                 return;
             }
 
-            // Save data to Firebase
-
             newContactRef.set({
                 email: email,
                 date: date
             });
-
-            // Display success message
             alert('Subscribed Successfully!!!');
         }
 
@@ -495,9 +457,9 @@
         <div class="footprintItem" data-aos="zoom-in-right" id="states">
 
             <div class="fpImg"><img src="./Assets//geo.svg" alt=""></div>
-            <h3 id="statesNumber" data-end-value="19">0</h3>
+            <h3 id="statesNumber" data-end-value="128">0</h3>
             <span class="footPara">
-                <p>States
+                <p>Villages
             </span>
 
 
@@ -505,9 +467,9 @@
         <div class="footprintItem" data-aos="zoom-in-right" id="families">
 
             <div class="fpImg"><img src="./Assets/family.png" alt=""></div>
-            <h3 id="familiesNumber" data-end-value="1000"> 0</h3>
+            <h3 id="familiesNumber" data-end-value="758"> 0</h3>
             <span class="footPara">
-                <p>Families
+                <p>Households
             </span>
 
 
@@ -556,20 +518,18 @@
                 <img src="https://www.villagesquare.in/wp-content/uploads/2018/11/Tribalintegration-1024x550.jpg"
                     class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title1</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="read-more-btn" id="1" aria-valuetext="1" onclick="latestNo()">Read More</a>
+                    <h5 class="card-title"><b>Empowering marginalized women</b></h5>
+                    <p class="card-text">Providing livelihood support and entrepreneurship skills for sustainable futures..</p>
+                    <a href="javascript:void(0)" class="read-more-btn" onclick="latestNo(1)">Read More</a>
                 </div>
             </div>
 
             <div class="card" style="width: 18rem;" id="card2" data-aos="zoom-in-up">
                 <img src="./Assets/93.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title2</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="read-more-btn" id="2" aria-valuetext="2" onclick="latestNo()">Read More</a>
+                    <h5 class="card-title"><b>24/7 Child Helpline</b></h5>
+                    <p class="card-text">Ensuring round-the-clock care and protection for vulnerable children in partnership with the Ministry of Women and Child Development..</p>
+                    <a href="javascript:void(0)" class="read-more-btn" onclick="latestNo(2)">Read More</a>
                 </div>
             </div>
 
@@ -578,14 +538,12 @@
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Tribes_of_Madhya_Pradesh_001.jpg/640px-Tribes_of_Madhya_Pradesh_001.jpg"
                     class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title3</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="read-more-btn" id="3" aria-valuetext="3" onclick="latestNo()">Read More</a>
+                    <h5 class="card-title"><b>Improving Safe Water Hygiene & Sanitation</b></h5>
+                    <p class="card-text">Improving water, sanitation, and hygiene for healthier communities, resilience, and enhanced quality of life..</p>
+                    <a href="javascript:void(0)" class="read-more-btn" onclick="latestNo(3)">Read More</a>
                 </div>
             </div>
         </div>
-
 
 
         <div class="latest-card-container" data-aos="zoom-in-up">
@@ -593,10 +551,9 @@
             <div class="card" style="width: 18rem;">
                 <img src="./Assets/43.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="read-more-btn" id="4" aria-valuetext="4" onclick="latestNo()">Read More</a>
+                    <h5 class="card-title"><b>Herbal Plants Dsitribution</b></h5>
+                    <p class="card-text">Herbal plant distribution, community awareness on holistic healthcare, preserving indigenous healing</p>
+                    <a href="javascript:void(0)" class="read-more-btn" onclick="latestNo(4)">Read More</a>
                 </div>
             </div>
 
@@ -604,10 +561,10 @@
             <div class="card" style="width: 18rem;" data-aos="zoom-in-up">
                 <img src="./Assets/93.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="read-more-btn" id="5" onclick="latestNo()">Read More</a>
+                    <h5 class="card-title"><b>Flood releif programs</b></h5>
+                    <p class="card-text">Community Capacity Building activities through Traditional
+                        mechanism of coping with floods.</p>
+                    <a href="javascript:void(0)" class="read-more-btn" onclick="latestNo(5)">Read More</a>
                 </div>
             </div>
 
@@ -615,22 +572,18 @@
             <div class="card" style="width: 18rem;" data-aos="zoom-in-up">
                 <img src="./Assets/53.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="read-more-btn" id="6" onclick="latestNo()">Read More</a>
+                    <h5 class="card-title"><b>A step towards enhancing agriculture</b></h5>
+                    <p class="card-text">Better fodder, disease control, land development, organic farming, sustainable livelihoods</p>
+                    <a href="javascript:void(0)" class="read-more-btn" onclick="latestNo(6)">Read More</a>
                 </div>
             </div>
         </div>
-
     </section>
 
 
+
     <section id="partners">
-
         <h3 class="partner-head">OUR PARTNERS</h3>
-
-
         <div class="slider-part">
             <div class="slide-track">
                 <div class="slide-part">
@@ -800,8 +753,11 @@
     <script src="script.js"></script>
 
 
-
     <script>
+
+        function latestNo(id) {
+            window.location.href = `latestCardDetails.html?id=${id}`;
+        }
 
         function animateNumbers(targetElement, endValue, duration) {
             let startValue = 0;
@@ -859,9 +815,6 @@
         }
 
         function subscribeAndPlaySound() {
-            // Your subscribe logic here
-
-            // Play notification sound
             playNotificationSound();
         }
 
