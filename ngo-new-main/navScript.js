@@ -37,19 +37,19 @@ whatDrop.addEventListener("mouseleave", () => {
   whatDrop.style.display = "none";
 });
 
-navRes.addEventListener("mouseenter", () => {
-  resDrop.style.display = "flex";
-});
-navRes.addEventListener("mouseleave", () => {
-  resDrop.style.display = "none";
-});
+// navRes.addEventListener("mouseenter", () => {
+//   resDrop.style.display = "flex";
+// });
+// navRes.addEventListener("mouseleave", () => {
+//   resDrop.style.display = "none";
+// });
 
-resDrop.addEventListener("mouseenter", () => {
-  resDrop.style.display = "flex";
-});
-resDrop.addEventListener("mouseleave", () => {
-  resDrop.style.display = "none";
-});
+// resDrop.addEventListener("mouseenter", () => {
+//   resDrop.style.display = "flex";
+// });
+// resDrop.addEventListener("mouseleave", () => {
+//   resDrop.style.display = "none";
+// });
 
 navGallery.addEventListener("mouseenter", () => {
   galleryDrop.style.display = "flex";
